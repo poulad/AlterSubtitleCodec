@@ -62,14 +62,8 @@ int main(int argc, char *argv[])
    QTextStream in(&input);
    QTextStream out(&output);
 
-   char codec[25];
-   for(int i = 0; i < arguments.at(2).size(); i++)
-   {
-      codec[i] = arguments.at(2).at(i).toLatin1();
-   }
-   char * inputCodec = &codec[0];
+   in.setCodec( QTextCodec::codecForName( arguments.at(2).toLatin1() ) );
 
-   in.setCodec(inputCodec);
    QString inputLine = "";
 
    while( !input.atEnd() )
